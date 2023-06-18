@@ -39,8 +39,6 @@ set background=dark
 filetype plugin on
 filetype indent on
 
-" Remap VIM 0 to first non-blank character
-map 0 ^
 
 function! VisualSelection(direction, extra_filter) range
   let l:saved_reg = @"
@@ -98,9 +96,11 @@ Plug 'preservim/NERDTree'
 " Press `+` to expand the visual selection and `_` to shrink it
 Plug 'terryma/vim-expand-region'
 Plug 'tmux-plugins/vim-tmux'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-surround'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'morhetz/gruvbox'
+Plug 'sainnhe/sonokai'
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
@@ -108,9 +108,14 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver'
   \ ]
 
+" Enable 256 colors palette in Gnome Terminal
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
+
 " https://github.com/morhetz/gruvbox/issues/85
 try
-  colorscheme gruvbox
+  colorscheme sonokai
 catch
 endtry
 
